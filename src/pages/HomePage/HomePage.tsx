@@ -1,23 +1,15 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonRouterOutlet } from '@ionic/react';
+import { Route, RouteComponentProps } from 'react-router-dom';
+import { PostDetailsPage } from '../PostDetailsPage';
+import { PostListPage } from '../PostListPage';
 import './HomePage.css';
 
-export const HomePage: React.FC<any> = (_props) => {
+export const HomePage: React.FC<RouteComponentProps> = ({match}: RouteComponentProps) => {
   return (
-    <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Blank</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Blank</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-      
-      </IonContent>
-    </IonPage>
+    <IonRouterOutlet>
+      <Route exact path={match.url} component={PostListPage} />
+      <Route path={`${match.url}/posts/:id`} component={PostDetailsPage} />
+    </IonRouterOutlet>
   );
 };
 
