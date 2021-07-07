@@ -1,0 +1,7 @@
+{
+  "name": "socialSharing",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
