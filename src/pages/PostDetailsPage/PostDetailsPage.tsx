@@ -1,8 +1,10 @@
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonItem, IonIcon, IonLabel, IonButton } from '@ionic/react';
+import * as React from 'react'
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonItem, IonIcon, IonLabel, IonButton, IonButtons, IonBackButton } from '@ionic/react';
 import { useEffect, useState } from 'react';
 import { RouteComponentProps, useParams,   } from 'react-router';
+import { Post } from '../../components/Post';
 import { posts } from '../../mocks/posts';
-import { Post } from '../../models/post';
+import { Post as PostType } from '../../models/post';
 
 import './PostDetailsPage.css';
 
@@ -14,34 +16,33 @@ type ParamsType = {
 export const PostDetailsPage: React.FC<RouteComponentProps> = ({history, match}: RouteComponentProps) => {
 
   const params = useParams<ParamsType>()
-  const [post, setPost] = useState<Post | undefined>(undefined)
+  const [post, setPost] = useState<PostType | undefined>(undefined)
 
  useEffect(() => {
-    const post: Post | undefined  = posts.find((post)=> post.id.toString() === params.id)
+    const post: PostType | undefined  = posts.find((post)=> post.id.toString() === params.id)
     setPost(post)
  }, [params.id])
 
   return (
+    <React.Fragment>
+    {!post ? 
+      <IonLabel>Loading...</IonLabel>
+      : 
     <IonPage>
-      <IonHeader>
+      <IonHeader >
         <IonToolbar>
-          <IonTitle>CardExamples</IonTitle>
+        <IonButtons slot="start">
+          <IonBackButton />
+        </IonButtons>
+          <IonTitle>Post Details</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <IonCard>
-          <IonCardHeader>
-            <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
-            <IonCardTitle>Card Title</IonCardTitle>
-          </IonCardHeader>
-
-          <IonCardContent>
-            {JSON.stringify(post)}
-      </IonCardContent>
-        </IonCard>
-
+      <Post post={post} />
       </IonContent>
     </IonPage>
-  );
+}
+    </React.Fragment>
+  )
 };
 
