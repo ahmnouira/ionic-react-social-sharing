@@ -17,7 +17,7 @@ import { RouteComponentProps, useParams } from 'react-router'
 import { Post } from '../../components/Post'
 import { posts } from '../../mocks/posts'
 import { Post as PostType } from '../../models/post'
-import { share, download, link } from 'ionicons/icons'
+import { shareOutline, bookmarkOutline, heartOutline } from 'ionicons/icons'
 
 import './PostDetailsPage.css'
 
@@ -56,13 +56,13 @@ export const PostDetailsPage: React.FC<RouteComponentProps> = ({ history, match 
             <IonToolbar>
               <IonButtons>
                 <IonButton size='large'>
-                  <IonIcon slot='icon-only' icon={share} />
+                  <IonIcon slot='icon-only' icon={heartOutline} />
                 </IonButton>
                 <IonButton size='large'>
-                  <IonIcon slot='icon-only' icon={download} />
+                  <IonIcon slot='icon-only' icon={shareOutline} />
                 </IonButton>
                 <IonButton size='large'>
-                  <IonIcon slot='icon-only' icon={link} />
+                  <IonIcon slot='icon-only' icon={bookmarkOutline} />
                 </IonButton>
               </IonButtons>
             </IonToolbar>
