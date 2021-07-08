@@ -1,48 +1,74 @@
 import * as React from 'react'
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonItem, IonIcon, IonLabel, IonButton, IonButtons, IonBackButton } from '@ionic/react';
-import { useEffect, useState } from 'react';
-import { RouteComponentProps, useParams,   } from 'react-router';
-import { Post } from '../../components/Post';
-import { posts } from '../../mocks/posts';
-import { Post as PostType } from '../../models/post';
+import {
+  IonPage,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonIcon,
+  IonLabel,
+  IonButton,
+  IonButtons,
+  IonBackButton,
+  IonFooter,
+} from '@ionic/react'
+import { useEffect, useState } from 'react'
+import { RouteComponentProps, useParams } from 'react-router'
+import { Post } from '../../components/Post'
+import { posts } from '../../mocks/posts'
+import { Post as PostType } from '../../models/post'
+import { share, download, link } from 'ionicons/icons'
 
-import './PostDetailsPage.css';
-
+import './PostDetailsPage.css'
 
 type ParamsType = {
   id: string
 }
 
-export const PostDetailsPage: React.FC<RouteComponentProps> = ({history, match}: RouteComponentProps) => {
-
+export const PostDetailsPage: React.FC<RouteComponentProps> = ({ history, match }: RouteComponentProps) => {
   const params = useParams<ParamsType>()
   const [post, setPost] = useState<PostType | undefined>(undefined)
 
- useEffect(() => {
-    const post: PostType | undefined  = posts.find((post)=> post.id.toString() === params.id)
+  useEffect(() => {
+    const post: PostType | undefined = posts.find((post) => post.id.toString() === params.id)
     setPost(post)
- }, [params.id])
+  }, [params.id])
 
   return (
     <React.Fragment>
-    {!post ? 
-      <IonLabel>Loading...</IonLabel>
-      : 
-    <IonPage>
-      <IonHeader >
-        <IonToolbar>
-        <IonButtons slot="start">
-          <IonBackButton />
-        </IonButtons>
-          <IonTitle>Post Details</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent>
-      <Post post={post} />
-      </IonContent>
-    </IonPage>
-}
+      {!post ? (
+        <IonLabel>Loading...</IonLabel>
+      ) : (
+        <IonPage>
+          <IonHeader>
+            <IonToolbar>
+              <IonButtons slot='start'>
+                <IonBackButton />
+              </IonButtons>
+              <IonTitle>Post Details</IonTitle>
+            </IonToolbar>
+          </IonHeader>
+          <IonContent>
+            <Post post={post} />
+          </IonContent>
+
+          <IonFooter>
+            <IonToolbar>
+              <IonButtons>
+                <IonButton size='large'>
+                  <IonIcon slot='icon-only' icon={share} />
+                </IonButton>
+                <IonButton size='large'>
+                  <IonIcon slot='icon-only' icon={download} />
+                </IonButton>
+                <IonButton size='large'>
+                  <IonIcon slot='icon-only' icon={link} />
+                </IonButton>
+              </IonButtons>
+            </IonToolbar>
+          </IonFooter>
+        </IonPage>
+      )}
     </React.Fragment>
   )
-};
-
+}

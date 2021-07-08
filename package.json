@@ -44,7 +44,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "format:fix": "prettier --write \"**/*.{ts,tsx,json,html}\""
   },
   "eslintConfig": {
     "extends": [
@@ -65,7 +66,8 @@
     ]
   },
   "devDependencies": {
-    "@capacitor/cli": "3.1.1"
+    "@capacitor/cli": "3.1.1",
+    "prettier": "^2.3.2"
   },
   "description": "An Ionic project"
 }
