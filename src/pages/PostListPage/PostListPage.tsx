@@ -14,7 +14,7 @@ import { posts } from '../../mocks/posts'
 import { Post } from '../../components/Post'
 import './PostListPage.css'
 
-export const PostListPage: React.FC<RouteComponentProps> = ({ history }: RouteComponentProps) => {
+export function PostListPage({}) {
   const renderPosts = posts.map((post) => {
     return (
       <IonItem key={post.id} routerLink={`/home/posts/${post.id}`}>

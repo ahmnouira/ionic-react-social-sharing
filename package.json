@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
+    "@babel/preset-typescript": "^7.14.5",
     "@capacitor/android": "3.1.1",
     "@capacitor/app": "1.0.2",
     "@capacitor/core": "3.1.1",
@@ -23,6 +24,7 @@
     "@types/react-dom": "^16.9.10",
     "@types/react-router": "^5.1.11",
     "@types/react-router-dom": "^5.1.7",
+    "babel-jest": "^26",
     "cordova-plugin-x-socialsharing": "^6.0.3",
     "ionicons": "^5.4.0",
     "react": "^17.0.1",
@@ -72,7 +74,10 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
     "@capacitor/cli": "3.1.1",
+    "jest-transform-stub": "^2.0.0",
     "prettier": "^2.3.2"
   },
   "description": "An Ionic project"

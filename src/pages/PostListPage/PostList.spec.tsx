@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
-import App from './App'
+import { PostListPage } from './PostListPage'
 
 test('renders without crashing', () => {
-  const { baseElement } = render(<App />)
+  const { baseElement } = render(<PostListPage />)
   expect(baseElement).toBeDefined()
 })

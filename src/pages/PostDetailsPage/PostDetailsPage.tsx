@@ -18,7 +18,7 @@ import { Post } from '../../components/Post'
 import { posts } from '../../mocks/posts'
 import { Post as PostType } from '../../models/post'
 import { shareOutline, bookmarkOutline, heartOutline } from 'ionicons/icons'
-import  {share} from '../../services/sharing.service'
+import { share } from '../../services/sharing.service'
 
 import './PostDetailsPage.css'
 
@@ -26,7 +26,7 @@ type ParamsType = {
   id: string
 }
 
-export const PostDetailsPage: React.FC<RouteComponentProps> = ({ history, match }: RouteComponentProps) => {
+export function PostDetailsPage() {
   const params = useParams<ParamsType>()
   const [post, setPost] = useState<PostType | undefined>(undefined)
 
@@ -35,11 +35,9 @@ export const PostDetailsPage: React.FC<RouteComponentProps> = ({ history, match 
     setPost(post)
   }, [params.id])
 
-  const handleShare =  async () => {
-  
-    if(post) {
-      console.log('share')
-     await share(post.title, post.image, post.source)
+  const handleShare = async () => {
+    if (post) {
+      await share(post.title, post.image, post.source)
     }
   }
 
@@ -68,7 +66,7 @@ export const PostDetailsPage: React.FC<RouteComponentProps> = ({ history, match 
                   <IonIcon slot='icon-only' icon={heartOutline} />
                 </IonButton>
                 <IonButton size='large' onClick={handleShare}>
-                  <IonIcon slot='icon-only' icon={shareOutline}/>
+                  <IonIcon slot='icon-only' icon={shareOutline} />
                 </IonButton>
                 <IonButton size='large'>
                   <IonIcon slot='icon-only' icon={bookmarkOutline} />

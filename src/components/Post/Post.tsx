@@ -1,12 +1,4 @@
-import {
-  IonCardTitle,
-  IonCardContent,
-  IonCard,
-  IonCardHeader,
-  IonCardSubtitle,
-  IonButtons,
-  IonBackButton,
-} from '@ionic/react'
+import { IonCardTitle, IonCardContent, IonCard, IonCardHeader, IonCardSubtitle } from '@ionic/react'
 import { Post as PostType } from '../../models/post'
 
 type PostProps = {

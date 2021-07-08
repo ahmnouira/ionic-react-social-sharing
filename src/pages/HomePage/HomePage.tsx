@@ -4,7 +4,7 @@ import { PostDetailsPage } from '../PostDetailsPage'
 import { PostListPage } from '../PostListPage'
 import './HomePage.css'
 
-export const HomePage: React.FC<RouteComponentProps> = ({ match }: RouteComponentProps) => {
+export function HomePage({ match }: RouteComponentProps) {
   return (
     <IonRouterOutlet>
       <Route exact path={match.url} component={PostListPage} />
