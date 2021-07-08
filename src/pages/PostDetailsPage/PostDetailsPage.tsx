@@ -18,6 +18,7 @@ import { Post } from '../../components/Post'
 import { posts } from '../../mocks/posts'
 import { Post as PostType } from '../../models/post'
 import { shareOutline, bookmarkOutline, heartOutline } from 'ionicons/icons'
+import  {share} from '../../services/sharing.service'
 
 import './PostDetailsPage.css'
 
@@ -33,6 +34,14 @@ export const PostDetailsPage: React.FC<RouteComponentProps> = ({ history, match 
     const post: PostType | undefined = posts.find((post) => post.id.toString() === params.id)
     setPost(post)
   }, [params.id])
+
+  const handleShare =  async () => {
+  
+    if(post) {
+      console.log('share')
+     await share(post.title, post.image, post.source)
+    }
+  }
 
   return (
     <React.Fragment>
@@ -58,8 +67,8 @@ export const PostDetailsPage: React.FC<RouteComponentProps> = ({ history, match 
                 <IonButton size='large'>
                   <IonIcon slot='icon-only' icon={heartOutline} />
                 </IonButton>
-                <IonButton size='large'>
-                  <IonIcon slot='icon-only' icon={shareOutline} />
+                <IonButton size='large' onClick={handleShare}>
+                  <IonIcon slot='icon-only' icon={shareOutline}/>
                 </IonButton>
                 <IonButton size='large'>
                   <IonIcon slot='icon-only' icon={bookmarkOutline} />
