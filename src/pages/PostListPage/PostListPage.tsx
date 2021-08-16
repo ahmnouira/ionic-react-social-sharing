@@ -17,7 +17,7 @@ import './PostListPage.css'
 export function PostListPage({}) {
   const renderPosts = posts.map((post) => {
     return (
-      <IonItem  key={post.id} routerLink={`/home/posts/${post.id}`}>
+      <IonItem button={false} detail={false} key={post.id} routerLink={`/home/posts/${post.id}`}>
         <Post post={post} />
       </IonItem>
     )

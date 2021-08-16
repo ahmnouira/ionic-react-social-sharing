@@ -29,26 +29,56 @@ export function PostDetailsPage() {
   const params = useParams<ParamsType>()
   const [post, setPost] = useState<PostType | undefined>(undefined)
 
+  const [headerStyles, setHeaderStyle] = React.useState<React.CSSProperties>()
+  const [mainContentStyles, setMainContentStyles] = React.useState<React.CSSProperties>()
+
+  const [headerHeight, setHeaderHeight] = React.useState<number>(0)
+
+  const [translateAmt, setTranslateAmt] = React.useState<number>()
+  const [scaleAmt, setScaleAmt] = React.useState<number>()
+
   const contentRef = React.useRef(null)
 
-  /*
-
-  ngOnInit(){
-    let content = this.element.nativeElement.getElementsByClassName('scroll-content')[0];
-    this.header = content.getElementsByClassName('header-image')[0];
-    let mainContent = content.getElementsByClassName('main-content')[0];
-    this.headerHeight = this.header.clientHeight;
-    this.renderer.setElementStyle(this.header, 'webkitTransformOrigin', 'center bottom');
-    this.renderer.setElementStyle(this.header, 'background-size', 'cover');
-    this.renderer.setElementStyle(mainContent, 'position', 'absolute');
-
-  }
-  */
+  const headerRef = React.useRef<HTMLDivElement>(null)
 
   React.useEffect(() => {
-    if (contentRef) {
+    if (headerRef) {
+      const header = headerRef.current
+
+      if (header) {
+        console.log('header', header?.clientHeight)
+        setHeaderHeight(header.clientHeight)
+      }
+      setHeaderStyle({
+        WebkitTransformOrigin: 'center bottom',
+        backgroundSize: 'cover',
+      })
+      setMainContentStyles({
+        position: 'absolute',
+      })
     }
-  }, [])
+  }, [headerRef])
+
+  useEffect(() => {
+    const header = headerRef.current
+    if (header) {
+      console.log('changed', header.clientHeight)
+      setHeaderHeight(header?.clientHeight)
+    }
+  }, [headerStyles])
+
+  const handleOnIonScroll = (ev: any) => {
+    if (ev.detail.scrollTop >= 0) {
+      setTranslateAmt(ev.detail.scrollTop / 2)
+      setScaleAmt(1)
+    } else {
+      setTranslateAmt(0)
+      setScaleAmt(-ev.detail.scrollTop / (headerHeight + 1))
+    }
+    setHeaderStyle({
+      WebkitTransform: 'translate3d(0,' + translateAmt + 'px,0) scale(' + scaleAmt + ',' + scaleAmt + ')',
+    })
+  }
 
   useEffect(() => {
     const post: PostType | undefined = posts.find((post) => post.id.toString() === params.id)
@@ -75,15 +105,13 @@ export function PostDetailsPage() {
               <IonTitle>Post Details</IonTitle>
             </IonToolbar>
           </IonHeader>
-          <IonContent ref={contentRef}>
-            <div className='header-image'>
-              <img src={post.image} style={{objectFit: "contain", objectPosition: 'center', width: '100%' }} />
+          <IonContent ref={contentRef} scrollEvents onIonScroll={handleOnIonScroll}>
+            <div className='header-image' ref={headerRef} style={headerStyles}>
+              <img src={post.image} style={{ objectFit: 'contain', objectPosition: 'center', width: '100%' }} />
             </div>
-            <div className='main-content'>
+            <div className='main-content' style={mainContentStyles}>
               <h2>{post.title}</h2>
-              <p>
-                {post.content}
-              </p>
+              <p>{post.content}</p>
               <p>
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
                 industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
