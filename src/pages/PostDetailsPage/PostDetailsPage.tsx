@@ -19,6 +19,7 @@ import { shareOutline, bookmarkOutline, heartOutline } from 'ionicons/icons'
 import { share } from '../../services/sharing.service'
 
 import './PostDetailsPage.css'
+import { IonHeaderParallax } from '../../lib/IonHeaderParallax'
 
 type ParamsType = {
   id: string
@@ -190,7 +191,6 @@ export function PostDetailsPage() {
     // image overlay
     setImageOverlayStyle({
       backgroundColor: expandedColor,
-      backgroundImage: `url(${imageUrl})`,
       height: '100%',
       width: '100%',
       pointerEvents: 'none',
@@ -219,7 +219,7 @@ export function PostDetailsPage() {
            `${this.maximumHeight + this.scrollContentPaddingTop - this.headerMinHeight}px`);
        }
        */
-  }, [imageUrl])
+  }, [])
 
   useEffect(() => {
     const header = headerRef.current
@@ -285,7 +285,7 @@ export function PostDetailsPage() {
 
   const toolbarElement  = 
   (
-  <IonToolbar style={{}}>
+  <IonToolbar style={{}} mode="ios">
   <IonButtons slot='start'>
     <IonBackButton defaultHref='/' />
   </IonButtons>
@@ -309,14 +309,13 @@ export function PostDetailsPage() {
 
   return (
     <React.Fragment>
+      
       <IonPage>
-        <IonHeader translucent>
+        <IonHeader translucent mode="ios">
           {toolbarElement}
-          <div className='color-overlay' style={colorOverlayStyle}>
-            <div className='image-overlay' style={imageOverlayStyle}>
-              {toolbarElement}
-            </div>
-          </div>
+          <IonHeaderParallax colorOverlayStyle={colorOverlayStyle} imageOverlayStyle={imageOverlayStyle} image={post?.image || ''}>
+          {toolbarElement}
+            </IonHeaderParallax>
         </IonHeader>
         <IonContent class='ion-padding' ref={contentRef} scrollEvents onIonScroll={handleOnIonScroll}>
           <div style={{ marginTop: 300 }}>
