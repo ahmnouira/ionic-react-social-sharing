@@ -2485,6 +2485,11 @@ acorn@^8.2.4:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.4.1.tgz#56c36251fc7cabc7096adc18f05afe814321a28c"
   integrity sha512-asabaBSkEKosYKMITunzX177CXxQ4Q8BSSzMTKD+FefUhipQC70gfW5SiUDhYQ3vk8G+81HqQk7Fv9OXwwn9KA==
 
+add@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/add/-/add-2.0.6.tgz#248f0a9f6e5a528ef2295dbeec30532130ae2235"
+  integrity sha1-JI8Kn25aUo7yKV2+7DBTITCuIjU=
+
 address@1.1.2, address@^1.0.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/address/-/address-1.1.2.tgz#bf1116c9c758c51b7a933d296b72c221ed9428b6"
@@ -6110,6 +6115,11 @@ internal-slot@^1.0.3:
     has "^1.0.3"
     side-channel "^1.0.4"
 
+ionic-react-header-parallax@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/ionic-react-header-parallax/-/ionic-react-header-parallax-0.0.7.tgz#d4a82612288f6565f354288429445444fa48050c"
+  integrity sha512-810/uEnetD+dqHhtCEDdm8f+zuYaubZXF/LC2GR8z1/OtM7j1GVvR+2vT6ByaFzd9cLqrpUhPSxCbcBzfUruVg==
+
 ionicons@^5.1.2, ionicons@^5.4.0, ionicons@^5.5.1:
   version "5.5.2"
   resolved "https://registry.yarnpkg.com/ionicons/-/ionicons-5.5.2.tgz#1a92315b7cb1d1d5246a85fded50b75d9cb950ec"
@@ -9186,7 +9196,7 @@ prompts@^2.0.1, prompts@^2.3.2:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.10, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -9411,6 +9421,11 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
+react-parallax@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/react-parallax/-/react-parallax-3.3.0.tgz#79f7a33451e7a419d0052f795c5d3655aa1e20b4"
+  integrity sha512-gI7YdblxdbhZ1ISqaWzIqlPSuQLX76QFbzWKmeA0hCprjephVdVD35gCN+Fu8v0p3cfw+DFTN/PE+jYgcCOLUw==
+
 react-refresh@^0.8.3:
   version "0.8.3"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.8.3.tgz#721d4657672d400c5e3c75d063c4a85fb2d5d68f"
@@ -9510,6 +9525,13 @@ react-scripts@4.0.2:
     workbox-webpack-plugin "5.1.4"
   optionalDependencies:
     fsevents "^2.1.3"
+
+react-scroll-parallax@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/react-scroll-parallax/-/react-scroll-parallax-2.4.0.tgz#064362107e18a1f610ba5c8e11c1c1aea0da4129"
+  integrity sha512-lFbf2SIEyxyIko/edR8Fx2mnn4T0t2WzLBa4E5ApoGwDsSWS1crL+LjRYtin+f3EV+rmBDzWqqr7vB5GsRpg9Q==
+  dependencies:
+    prop-types "^15.5.10"
 
 react@^17.0.1:
   version "17.0.2"
@@ -11925,6 +11947,11 @@ yargs@^15.4.1:
     which-module "^2.0.0"
     y18n "^4.0.0"
     yargs-parser "^18.1.2"
+
+yarn@^1.22.11:
+  version "1.22.11"
+  resolved "https://registry.yarnpkg.com/yarn/-/yarn-1.22.11.tgz#d0104043e7349046e0e2aec977c24be106925ed6"
+  integrity sha512-AWje4bzqO9RUn3sdnM5N8n4ZJ0BqCc/kqFJvpOI5/EVkINXui0yuvU7NDCEF//+WaxHuNay2uOHxA4+tq1P3cg==
 
 yauzl@^2.10.0:
   version "2.10.0"

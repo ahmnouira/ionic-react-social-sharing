@@ -2,6 +2,7 @@ import { Redirect, Route } from 'react-router-dom'
 import { IonApp, IonRouterOutlet } from '@ionic/react'
 import { IonReactRouter } from '@ionic/react-router'
 import { HomePage } from './pages/HomePage'
+import { ParallaxProvider } from 'react-scroll-parallax'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css'
@@ -24,13 +25,15 @@ import './theme/variables.css'
 
 export function App() {
   return (
-    <IonApp>
-      <IonReactRouter>
-        <IonRouterOutlet>
-          <Route path='/home' render={(props) => <HomePage {...props} />} />
-          <Route exact path='/' render={() => <Redirect to='/home' />} />
-        </IonRouterOutlet>
-      </IonReactRouter>
-    </IonApp>
+    <ParallaxProvider>
+      <IonApp>
+        <IonReactRouter>
+          <IonRouterOutlet>
+            <Route path='/home' render={(props) => <HomePage {...props} />} />
+            <Route exact path='/' render={() => <Redirect to='/home' />} />
+          </IonRouterOutlet>
+        </IonReactRouter>
+      </IonApp>
+    </ParallaxProvider>
   )
 }

@@ -29,8 +29,13 @@ export function PostDetailsPage() {
   const params = useParams<ParamsType>()
   const [post, setPost] = useState<PostType | undefined>(undefined)
 
+  /** styles */
   const [headerStyles, setHeaderStyle] = React.useState<React.CSSProperties>()
   const [mainContentStyles, setMainContentStyles] = React.useState<React.CSSProperties>()
+  const [colorOverlayStyle, setColorOverlayStyle] = React.useState<React.CSSProperties>({})
+  const [imageOverlayStyle, setImageOverlayStyle] = React.useState<React.CSSProperties>({})
+  const [overlayTitleStyle, setOverlayTitleStyle] = React.useState<React.CSSProperties>({})
+  const [toolbarTitleStyle, setToolbarTitleStyle] = React.useState<React.CSSProperties>({})
 
   const [headerHeight, setHeaderHeight] = React.useState<number>(0)
 
@@ -38,35 +43,67 @@ export function PostDetailsPage() {
   const [scaleAmt, setScaleAmt] = React.useState<number>()
 
   const contentRef = React.useRef(null)
+  const headerRef = React.useRef<any>()
 
-  const headerRef = React.useRef<HTMLDivElement>(null)
-
+  // inits
   React.useEffect(() => {
-    if (headerRef) {
-      const header = headerRef.current
+    const header: HTMLIonHeaderElement = document.getElementsByTagName('ion-header')[0]
 
-      if (header) {
-        console.log('header', header?.clientHeight)
-        setHeaderHeight(header.clientHeight)
-      }
-      setHeaderStyle({
-        WebkitTransformOrigin: 'center bottom',
-        backgroundSize: 'cover',
-      })
-      setMainContentStyles({
-        position: 'absolute',
+    const parentElement = header.parentElement
+
+    if (!parentElement) throw new Error('No parentElemnt')
+
+    const toolbar = header.querySelector('ion-toolbar')
+
+    if (!toolbar) throw new Error('Parallax requires a <ion-toolbar> or navbar element on the page to work.')
+
+    const ionTitle = toolbar.querySelector('ion-title')
+
+    if (!toolbar.shadowRoot) throw new Error('Parallax requires a <ion-toolbar> with shadow root.')
+
+    const toolbarBackground = toolbar.shadowRoot.querySelector('.toolbar-background')
+
+    const barButtons = header.querySelector('ion-buttons')
+
+    const ionContent = parentElement.querySelector('ion-content')
+
+    if (!ionContent) throw new Error('Parallax directive requires an <ion-content> element on the page to work.')
+
+    if (!ionContent.shadowRoot) throw new Error('Parallax requires a shadowRoot <ion-content>')
+
+    const scrollContent = ionContent.shadowRoot.querySelector('.inner-scroll')
+
+    if (!scrollContent) {
+      throw new Error('Parallax directive requires an <ion-content> element on the page to work.')
+    }
+
+    console.log('main', scrollContent)
+
+    /**  Copy title and buttons **/
+    const overlayTitle = ionTitle && (ionTitle.cloneNode(true) as HTMLElement)
+
+    if (overlayTitle) {
+      ////// this.renderer.addClass(this.overlayTitle, 'parallax-title');
+      setTimeout(() => {
+        const toolbarTitle = overlayTitle.shadowRoot?.querySelector('.toolbar-title')
+
+        console.log('toolbar', toolbarTitle)
+
+        setToolbarTitleStyle({
+          pointerEvents: 'unset',
+        })
       })
     }
-  }, [headerRef])
+  }, [])
 
   useEffect(() => {
     const header = headerRef.current
     if (header) {
-      console.log('changed', header.clientHeight)
       setHeaderHeight(header?.clientHeight)
     }
   }, [headerStyles])
 
+  // handle scroll
   const handleOnIonScroll = (ev: any) => {
     if (ev.detail.scrollTop >= 0) {
       setTranslateAmt(ev.detail.scrollTop / 2)
@@ -75,9 +112,17 @@ export function PostDetailsPage() {
       setTranslateAmt(0)
       setScaleAmt(-ev.detail.scrollTop / (headerHeight + 1))
     }
-    setHeaderStyle({
-      WebkitTransform: 'translate3d(0,' + translateAmt + 'px,0) scale(' + scaleAmt + ',' + scaleAmt + ')',
-    })
+
+    /*
+        // Parallax total progress
+        this.headerMinHeight = this.toolbar.offsetHeight;
+        let progress = (this.maximumHeight - this.scrollTop - this.headerMinHeight) / (this.maximumHeight - this.headerMinHeight);
+        progress = Math.max(progress, 0);
+    
+        // ion-header: set height
+        let targetHeight = this.maximumHeight - this.scrollTop;
+        targetHeight = Math.max(targetHeight, this.headerMinHeight);
+*/
   }
 
   useEffect(() => {
@@ -93,69 +138,70 @@ export function PostDetailsPage() {
 
   return (
     <React.Fragment>
-      {!post ? (
-        <IonLabel>Loading...</IonLabel>
-      ) : (
-        <IonPage>
-          <IonHeader>
-            <IonToolbar>
-              <IonButtons slot='start'>
-                <IonBackButton />
-              </IonButtons>
-              <IonTitle>Post Details</IonTitle>
-            </IonToolbar>
-          </IonHeader>
-          <IonContent ref={contentRef} scrollEvents onIonScroll={handleOnIonScroll}>
-            <div className='header-image' ref={headerRef} style={headerStyles}>
-              <img src={post.image} style={{ objectFit: 'contain', objectPosition: 'center', width: '100%' }} />
+      <IonPage>
+        <IonHeader ref={headerRef}>
+          <div className='color-overlay' style={colorOverlayStyle}>
+            <div
+              className='image-overlay'
+              style={{
+                ...imageOverlayStyle,
+              }}>
+              <IonToolbar>
+                <IonButtons slot='start'>
+                  <IonBackButton />
+                </IonButtons>
+                <IonTitle>Post Details</IonTitle>
+              </IonToolbar>
             </div>
-            <div className='main-content' style={mainContentStyles}>
-              <h2>{post.title}</h2>
-              <p>{post.content}</p>
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
-                into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
-                release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
-                software like Aldus PageMaker including versions of Lorem Ipsum.
-              </p>
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
-                into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
-                release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
-                software like Aldus PageMaker including versions of Lorem Ipsum.
-              </p>
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
-                into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
-                release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
-                software like Aldus PageMaker including versions of Lorem Ipsum.
-              </p>
-            </div>
-          </IonContent>
+          </div>
+        </IonHeader>
+        <IonContent ref={contentRef} scrollEvents onIonScroll={handleOnIonScroll}>
+          <div style={{}}>
+            <h2>{post?.title}</h2>
+            <p>{post?.content}</p>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+              scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+              electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release
+              of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
+              like Aldus PageMaker including versions of Lorem Ipsum.
+            </p>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+              scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+              electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release
+              of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
+              like Aldus PageMaker including versions of Lorem Ipsum.
+            </p>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+              scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+              electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release
+              of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
+              like Aldus PageMaker including versions of Lorem Ipsum.
+            </p>
+          </div>
+        </IonContent>
 
-          <IonFooter>
-            <IonToolbar>
-              <IonButtons>
-                <IonButton size='large'>
-                  <IonIcon slot='icon-only' icon={heartOutline} />
-                </IonButton>
-                <IonButton size='large' onClick={handleShare}>
-                  <IonIcon slot='icon-only' icon={shareOutline} />
-                </IonButton>
-                <IonButton size='large'>
-                  <IonIcon slot='icon-only' icon={bookmarkOutline} />
-                </IonButton>
-              </IonButtons>
-            </IonToolbar>
-          </IonFooter>
-        </IonPage>
-      )}
+        <IonFooter>
+          <IonToolbar>
+            <IonButtons>
+              <IonButton size='large'>
+                <IonIcon slot='icon-only' icon={heartOutline} />
+              </IonButton>
+              <IonButton size='large' onClick={handleShare}>
+                <IonIcon slot='icon-only' icon={shareOutline} />
+              </IonButton>
+              <IonButton size='large'>
+                <IonIcon slot='icon-only' icon={bookmarkOutline} />
+              </IonButton>
+            </IonButtons>
+          </IonToolbar>
+        </IonFooter>
+      </IonPage>
     </React.Fragment>
   )
 }
