@@ -28,7 +28,7 @@
     "babel-jest": "^26",
     "cordova-plugin-x-socialsharing": "^6.0.3",
     "es6-promise-plugin": "^4.2.2",
-    "ionic-react-header-parallax": "^0.0.7",
+    "ionic-react-header-parallax": "^0.1.5",
     "ionicons": "^5.4.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -51,8 +51,7 @@
     "workbox-range-requests": "^5.1.4",
     "workbox-routing": "^5.1.4",
     "workbox-strategies": "^5.1.4",
-    "workbox-streams": "^5.1.4",
-    "yarn": "^1.22.11"
+    "workbox-streams": "^5.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -64,7 +63,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "format:fix": "prettier --write \"**/*.{ts,tsx,json,html}\""
+    "format:fix": "prettier --write \"**/*.{ts,tsx,js,jsx,json,html,css}\""
   },
   "eslintConfig": {
     "extends": [
