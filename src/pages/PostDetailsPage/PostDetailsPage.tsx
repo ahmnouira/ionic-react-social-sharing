@@ -39,11 +39,9 @@ export function PostDetailsPage() {
     }
   }
 
-  useIonHeaderParallax({
+ const {ref} = useIonHeaderParallax({
     image: post?.image || '',
     titleColor: 'red',
-    expandedColor: 'blue',
-    maximumHeight: 300,
   })
 
   const lorem = (
@@ -60,7 +58,7 @@ export function PostDetailsPage() {
   return (
     <React.Fragment>
       <IonPage>
-        <IonHeader translucent mode='ios'>
+        <IonHeader translucent mode='ios' ref={ref}>
           <IonToolbar mode='ios'>
             <IonButtons slot='start'>
               <IonBackButton defaultHref='/' />

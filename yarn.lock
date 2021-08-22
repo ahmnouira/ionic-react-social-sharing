@@ -6115,10 +6115,10 @@ internal-slot@^1.0.3:
     has "^1.0.3"
     side-channel "^1.0.4"
 
-ionic-react-header-parallax@^0.1.5:
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/ionic-react-header-parallax/-/ionic-react-header-parallax-0.1.5.tgz#c4b4b26ba888c300981b8479ff6e8d82f2235d44"
-  integrity sha512-bDcJWQwnvt9DJIyZjfNP+RbxJgGJA4ljBrMSXd0m2AhvDoogJyr2qhcr2yPLsBXJYlq7njghzDIhrvH9YEOoAQ==
+ionic-react-header-parallax@^0.1.7:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/ionic-react-header-parallax/-/ionic-react-header-parallax-0.1.7.tgz#588d8e22315ff82facc2e06aaedb220f4bc9daa2"
+  integrity sha512-lJrYJ4Sdf/smmzVyRZarO0LvZ6g0ULk24fd1EJ5+XCwNfw8wdqs16jhWBDIybA+MeF85MJWZCdsmxxaGh05CPQ==
 
 ionicons@^5.1.2, ionicons@^5.4.0, ionicons@^5.5.1:
   version "5.5.2"
@@ -11947,11 +11947,6 @@ yargs@^15.4.1:
     which-module "^2.0.0"
     y18n "^4.0.0"
     yargs-parser "^18.1.2"
-
-yarn@^1.22.11:
-  version "1.22.11"
-  resolved "https://registry.yarnpkg.com/yarn/-/yarn-1.22.11.tgz#d0104043e7349046e0e2aec977c24be106925ed6"
-  integrity sha512-AWje4bzqO9RUn3sdnM5N8n4ZJ0BqCc/kqFJvpOI5/EVkINXui0yuvU7NDCEF//+WaxHuNay2uOHxA4+tq1P3cg==
 
 yauzl@^2.10.0:
   version "2.10.0"
