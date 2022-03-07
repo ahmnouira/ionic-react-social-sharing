@@ -29,7 +29,7 @@
     "cordova-plugin-x-socialsharing": "^6.0.3",
     "es6-promise-plugin": "^4.2.2",
     "ionic-react-header-parallax": "^0.1.7",
-    "ionicons": "^5.4.0",
+    "ionicons": "5.5.4",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router": "^5.2.0",
