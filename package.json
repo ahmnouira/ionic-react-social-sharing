@@ -14,7 +14,7 @@
     "@ionic-native/core": "^5.34.0",
     "@ionic-native/social-sharing": "^5.34.0",
     "@ionic/react": "^5.5.0",
-    "@ionic/react-router": "^5.5.0",
+    "@ionic/react-router": "5.9.4",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.6.3",
