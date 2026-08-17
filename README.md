@@ -1,6 +1,6 @@
 # ionic-react-social-sharing
 
-This is Ionic React sample example which have the following features: 
+This is Ionic React sample example which have the following features:
 
 - [x] List of posts
 - [x] Post details  
