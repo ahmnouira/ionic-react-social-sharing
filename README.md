@@ -13,19 +13,7 @@ A sample Ionic React app that demonstrates a social-style news feed with post de
 
 ## Demo
 
-### YouTube
-
-[![Watch on YouTube](https://img.youtube.com/vi/IN0NjJ-h3Xw/maxresdefault.jpg)](https://www.youtube.com/shorts/IN0NjJ-h3Xw)
-
-**[Ionic React Social Sharing Demo](https://www.youtube.com/shorts/IN0NjJ-h3Xw)** — News feed, parallax header & native share (Ionic 8 + Capacitor 8)
-
-### Video walkthrough
-
-<p align ="center">
-  <video src="https://github.com/user-attachments/assets/a0420426-0f4e-456a-9a64-d294e8764337" controls>
-    Your browser does not support the video tag. <a href="demos/1.mp4">Download the demo video</a>.
-  </video>
-</p>
+Existing YouTube demo: **[Watch on YouTube](https://www.youtube.com/shorts/IN0NjJ-h3Xw)**
 
 ### Screenshots
 
