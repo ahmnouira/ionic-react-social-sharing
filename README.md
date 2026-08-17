@@ -108,3 +108,4 @@ Sharing works on a real device or emulator with the native plugin configured. In
 ## Related projects
 
 - [ionic-react-header-parallax](https://github.com/ahmnouira/ionic-react-header-parallax) — Parallax header hook used in this app
+- [@ahmnouira/props](https://github.com/ahmnouira/ahmnouira-props) - ⚡ Type-safe, easy-to-use props and utilities for building scalable TypeScript applications used in this app
