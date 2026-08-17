@@ -14,9 +14,11 @@ A sample Ionic React app that demonstrates a social-style news feed with post de
 
 ### Video walkthrough
 
-<video src="demos/1.mp4" controls width="600">
-  Your browser does not support the video tag. <a href="demos/1.mp4">Download the demo video</a>.
-</video>
+<p align ="center">
+  <video src="https://github.com/user-attachments/assets/a0420426-0f4e-456a-9a64-d294e8764337" controls>
+    Your browser does not support the video tag. <a href="demos/1.mp4">Download the demo video</a>.
+  </video>
+</p>
 
 ### Screenshots
 
