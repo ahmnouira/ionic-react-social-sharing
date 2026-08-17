@@ -19,6 +19,7 @@ import { shareOutline, bookmarkOutline, heartOutline } from "ionicons/icons";
 import { share } from "../../services/sharing.service";
 import { useIonHeaderParallax } from "ionic-react-header-parallax";
 import "./PostDetailsPage.css";
+import { Lorem } from "../../components/Lorem";
 
 type ParamsType = {
   id: string;
@@ -43,22 +44,9 @@ export function PostDetailsPage() {
 
   const { ref } = useIonHeaderParallax({
     image: post?.image || "",
+    maximumHeight: 420,
     titleColor: "red",
   });
-
-  const lorem = (
-    <p>
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-      Lorem Ipsum has been the industry's standard dummy text ever since the
-      1500s, when an unknown printer took a galley of type and scrambled it to
-      make a type specimen book. It has survived not only five centuries, but
-      also the leap into electronic typesetting, remaining essentially
-      unchanged. It was popularised in the 1960s with the release of Letraset
-      sheets containing Lorem Ipsum passages, and more recently with desktop
-      publishing software like Aldus PageMaker including versions of Lorem
-      Ipsum.
-    </p>
-  );
 
   return (
     <React.Fragment>
@@ -80,7 +68,7 @@ export function PostDetailsPage() {
           {Array(20)
             .fill(1)
             .map((el, index) => (
-              <div key={index}>{lorem}</div>
+              <Lorem title={(index + 1).toString()} key={index} />
             ))}
         </IonContent>
 

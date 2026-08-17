@@ -5,26 +5,12 @@ import {
   IonTitle,
   IonContent,
   IonList,
-  IonItem,
 } from "@ionic/react";
 import { posts } from "../../mocks/posts";
-import { Post } from "../../components/Post";
 import "./PostListPage.css";
+import { PostItem } from "../../components/PostItem";
 
 export function PostListPage({}) {
-  const renderPosts = posts.map((post) => {
-    return (
-      <IonItem
-        button={false}
-        detail={false}
-        key={post.id}
-        routerLink={`/home/posts/${post.id}`}
-      >
-        <Post post={post} />
-      </IonItem>
-    );
-  });
-
   return (
     <IonPage>
       <IonHeader>
@@ -33,7 +19,11 @@ export function PostListPage({}) {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <IonList>{renderPosts}</IonList>
+        <IonList>
+          {posts.map((p, idx) => (
+            <PostItem key={idx} item={p} />
+          ))}
+        </IonList>
       </IonContent>
     </IonPage>
   );
