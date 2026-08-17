@@ -1,0 +1,9 @@
+.lorem {
+  display: flex;
+  gap: 8px;
+  align-items: start;
+}
+
+.lorem p {
+  margin-top: 0;
+}

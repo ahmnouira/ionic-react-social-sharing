@@ -1,1 +1,1 @@
-export * from './PostDetailsPage'
+export * from "./PostDetailsPage";
