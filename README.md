@@ -8,6 +8,7 @@ A sample Ionic React app that demonstrates a social-style news feed with post de
 - **Post details** — Full article view with scrollable content
 - **Share a post** — Native share sheet via `@ionic-native/social-sharing` (title, image, and source URL)
 - **Parallax header** — Collapsing hero image on the details screen using [ionic-react-header-parallax](https://github.com/ahmnouira/ionic-react-header-parallax)
+- **Type-safe props** — Reusable component prop types via [@ahmnouira/props](https://github.com/ahmnouira/ahmnouira-props) (`ItemProps`, `TitleProps`)
 - **Dark mode** — System-aware theme via Ionic's dark palette
 
 ## Demo
@@ -38,6 +39,7 @@ A sample Ionic React app that demonstrates a social-style news feed with post de
 - [Vite](https://vitejs.dev/) + TypeScript
 - [@ionic-native/social-sharing](https://github.com/danielsogl/awesome-cordova-plugins/tree/master/src/%40ionic-native/social-sharing) — native share API
 - [ionic-react-header-parallax](https://github.com/ahmnouira/ionic-react-header-parallax) — parallax header hook
+- [@ahmnouira/props](https://github.com/ahmnouira/ahmnouira-props) — type-safe prop utilities for components
 
 ## Getting started
 
@@ -110,4 +112,4 @@ Sharing works on a real device or emulator with the native plugin configured. In
 ## Related projects
 
 - [ionic-react-header-parallax](https://github.com/ahmnouira/ionic-react-header-parallax) — Parallax header hook used in this app
-- [@ahmnouira/props](https://github.com/ahmnouira/ahmnouira-props) - ⚡ Type-safe, easy-to-use props and utilities for building scalable TypeScript applications used in this app
+- [@ahmnouira/props](https://github.com/ahmnouira/ahmnouira-props) — Type-safe prop utilities used for `Post`, `PostItem`, and `Lorem` components
